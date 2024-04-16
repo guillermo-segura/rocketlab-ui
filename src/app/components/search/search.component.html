@@ -1,0 +1,15 @@
+<div class="search-container">
+    <div class="search-label-container">
+        <label for="searchInput" class="search-label">TREE SEARCH</label>
+    </div>
+    <input id="searchInput" type="text" placeholder="Type here to search. (E.g. Rocket/Stage1)" name="query" class="search-input">
+    <div *ngIf="query.length > 0 && !searchResults">
+        <p class="no-result-message">No tree found for the given path.</p>
+    </div>
+    <div *ngIf="query.length > 0 && searchResults">
+        <p class="no-result-message">Tree found:</p>
+    </div>
+    <ul *ngIf="query.length > 0 && searchResults">
+        <app-node [node]="searchResults"></app-node>
+    </ul>
+</div>

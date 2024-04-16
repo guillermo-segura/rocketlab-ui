@@ -1,0 +1,16 @@
+<li>
+    {{node?.name}}
+    <span *ngIf="node?.createdAt" class="sub-text">{{node?.createdAt | createdAt }}</span>
+    <app-delete-button
+        [title]="'Delete node'"
+        [message]="'Are you sure you want to delete ' + (node?.name) + '?'"
+        [actionLabel]="'Delete node'"
+        [action]="deleteNode"
+    ></app-delete-button>
+</li>
+<ul *ngIf="node?.properties">
+    <li *ngFor="let property of properties">
+        {{ property }}: <span [ngClass]="{'valid-value': isValueValid(property)}">{{ getValue(property) }}</span>
+    </li>
+    <app-node *ngFor="let child of node?.children" [node]="child"></app-node>
+</ul>
